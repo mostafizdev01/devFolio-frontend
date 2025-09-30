@@ -1,11 +1,10 @@
-import Link from "next/link";
 import { CTAButtons } from "./CTAButton";
 import Image from "next/image";
 
 export default function HeroDev() {
     return (
         <div>
-            <section className="text-center py-50">
+            <section className="text-center py-50 bg-[radial-gradient(#00ff7133_1px,#000000_1px)] bg-[size:20px_20px]">
                 <div className=" flex justify-center mb-5"><Image className=" rounded-full border-4 border-green-700" src={"https://avatars.githubusercontent.com/u/145785701?v=4"} width={100} height={100} alt="Mostafiz Profile" /></div>
                 <h1 className="text-3xl flex font-semibold justify-center box-border caret-transparent leading-9 text-center mb-6 font-righteous_9f6af0 md:text-[56px] md:leading-[61px] md:text-left">
                     Hey I&#39;m{""},
