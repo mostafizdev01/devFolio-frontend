@@ -1,17 +1,34 @@
 "use client"
 
-import { Button } from "@/components/ui/button";
-import { toast } from "sonner";
+import { NavMenu } from "@/components/DesktopNavbar/DesktopNavbar";
+import { MobileNavHeader } from "@/components/DesktopNavbar/MobileNavbar";
+import HeroSection from "@/components/HeroSection";
+import HeroDev from "@/components/HeroSection/HeroDev";
+
+// import { Button } from "@/components/ui/button";
+// import { toast } from "sonner";
 
 export default function Home() {
 
-  const handleSonner = ()=> {
-    toast.success("Payment Successfull")
-  }
+  // const handleSonner = () => {
+  //   toast.success("Payment Successfull")
+  // }
+
   return (
-    <div className=" min-h-dvh flex flex-col justify-center gap-5 items-center text-5xl">
-      <h2>WellCome to DevFolio</h2>
-      <Button onClick={()=>handleSonner()}>Click me</Button>
+    <div className=" min-h-screen bg-black text-white">
+      <main className="text-white bg-black box-border caret-transparent">
+        <NavMenu />
+        <HeroDev />
+        {/* <MobileNavHeader /> */}
+        {/* <HeroSection /> */}
+        {/* <SkillsSection />
+        <ToolsSection />
+        <ProjectsSection />
+        <ExperienceSection />
+        <ContactSection />
+        <Footer />  */}
+      </main>
+      {/* <div className="absolute box-border caret-transparent block"></div> */}
     </div>
   );
 }
