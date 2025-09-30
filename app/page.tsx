@@ -5,6 +5,7 @@ import { NavMenu } from "@/components/DesktopNavbar/DesktopNavbar";
 // import HeroSection from "@/components/HeroSection";
 import HeroDev from "@/components/HeroSection/HeroDev";
 import { SkillsSection } from "@/components/SkillsSection";
+import { ToolsSection } from "@/components/ToolsSection";
 
 // import { Button } from "@/components/ui/button";
 // import { toast } from "sonner";
@@ -21,6 +22,7 @@ export default function Home() {
         <NavMenu />
         <HeroDev />
         <SkillsSection />
+        <ToolsSection />
       </main>
       {/* <div className="absolute box-border caret-transparent block"></div> */}
     </div>
