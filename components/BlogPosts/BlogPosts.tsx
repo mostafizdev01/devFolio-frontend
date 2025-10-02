@@ -7,6 +7,8 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "../Pr
 
 export default function BlogPosts() {
     const featuredPosts = mockBlogPosts.filter((post) => post.featured).slice(0, 2)
+    console.log(featuredPosts);
+    
     return (
         <section className="py-16 w-11/12 md:max-w-[1300px] mx-auto">
             <div className="flex items-center justify-between mb-8">

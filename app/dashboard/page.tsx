@@ -6,6 +6,8 @@ import SidebarClient from "@/components/DashboardComponents/Sidebar";
 import Topbar from "@/components/DashboardComponents/Topbar";
 import BlogCard from "@/components/DashboardComponents/BlogCard";
 import ProjectCard from "@/components/DashboardComponents/ProjectCard";
+import BlogModal from "@/components/DashboardComponents/CreateBlog";
+import ProjectModal from "@/components/DashboardComponents/CreateProject";
 
 export default function DashboardPage() {
   // demo data
@@ -35,8 +37,11 @@ export default function DashboardPage() {
           <div className="mb-6 flex items-center justify-between gap-4">
             <h3 className="text-xl font-semibold">Content Management</h3>
             <div className="flex gap-2">
-              <button className="px-4 py-2 rounded-md bg-cyan-500 text-black font-medium">+ Add New Blog</button>
-              <button className="px-4 py-2 rounded-md bg-emerald-500 text-black font-medium">+ Add New Project</button>
+              <BlogModal />
+              <div></div>
+              <ProjectModal>
+                <button className="px-4 py-2 rounded-md bg-emerald-500 text-black font-medium">+ Add New Project</button>
+              </ProjectModal>
             </div>
           </div>
 
