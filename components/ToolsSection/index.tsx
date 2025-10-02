@@ -16,28 +16,16 @@ export const ToolsSection = () => {
                         title="Html"
                     />
                     <ToolItem
-                        iconSrc="https://c.animaapp.com/mg5yzz7jpcryVW/assets/icon-10.svg"
-                        iconAlt="Icon"
-                        iconVariant="text-yellow-400 h-[70px] w-[70px]"
-                        title="Html"
-                    />
-                    <ToolItem
-                        iconSrc="https://c.animaapp.com/mg5yzz7jpcryVW/assets/icon-10.svg"
-                        iconAlt="Icon"
-                        iconVariant="text-yellow-400 h-[70px] w-[70px]"
-                        title="Html"
-                    />
-                    <ToolItem
-                        iconSrc="https://c.animaapp.com/mg5yzz7jpcryVW/assets/icon-10.svg"
-                        iconAlt="Icon"
-                        iconVariant="text-yellow-400 h-[70px] w-[70px]"
-                        title="Html"
-                    />
-                    <ToolItem
                         iconSrc="https://c.animaapp.com/mg5yzz7jpcryVW/assets/icon-11.svg"
                         iconAlt="Icon"
                         iconVariant="text-fuchsia-500 h-[70px] w-[70px]"
                         title="Css"
+                    />
+                    <ToolItem
+                        iconSrc="https://cdn.worldvectorlogo.com/logos/tailwind-css-2.svg"
+                        iconAlt="Icon"
+                        iconVariant="text-green-500 h-[70px] w-[70px]"
+                        title="Tailwind"
                     />
                     <ToolItem
                         iconSrc="https://c.animaapp.com/mg5yzz7jpcryVW/assets/icon-12.svg"
@@ -94,10 +82,22 @@ export const ToolsSection = () => {
                         title="Postgres SQL"
                     />
                     <ToolItem
+                        iconSrc="https://www.freelogovectors.net/wp-content/uploads/2022/01/prisma_logo-freelogovectors.net_.png"
+                        iconAlt="Icon"
+                        iconVariant="text-green-500 h-[70px] w-[70px]"
+                        title="Prisma"
+                    />
+                    <ToolItem
                         iconSrc="https://c.animaapp.com/mg5yzz7jpcryVW/assets/icon-20.svg"
                         iconAlt="Icon"
                         iconVariant="text-green-500 h-[70px] w-[70px]"
                         title="Mongodb"
+                    />
+                    <ToolItem
+                        iconSrc="https://slack.mongoosejs.io/images/mongoose.svg"
+                        iconAlt="Icon"
+                        iconVariant="text-green-500 h-[70px] w-[70px]"
+                        title="Mongoose"
                     />
                 </div>
             </div>
