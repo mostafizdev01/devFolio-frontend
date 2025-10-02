@@ -1,4 +1,4 @@
-import { ArrowRight, Badge, ExternalLink, Github } from "lucide-react";
+import { ArrowRight, ExternalLink, Github } from "lucide-react";
 import { Button } from "../ui/button";
 import Link from "next/link";
 import { mockProjects } from "@/lib/data";
@@ -65,10 +65,10 @@ export default function Projects() {
                             <div className="flex gap-3">
                                 {project.githubUrl && (
                                     <Button
-                                        variant="ghost"
+                                        variant="default"
                                         size="sm"
                                         asChild
-                                        className="bg-gray-900 text-gray-200 hover:bg-indigo-600 hover:text-white border border-gray-700"
+                                        className="bg-gray-900 text-gray-300 hover:text-white border border-gray-700"
                                     >
                                         <a
                                             href={project.githubUrl}
@@ -83,19 +83,19 @@ export default function Projects() {
 
                                 {project.liveUrl && (
                                     <Button
-                                        variant="ghost"
+                                        variant="default"
                                         size="sm"
                                         asChild
-                                        className="bg-gray-900 text-gray-200 hover:bg-green-600 hover:text-white border border-gray-700"
+                                        className="bg-gray-900 text-gray-300 hover:text-white border border-gray-700"
                                     >
-                                        <a
+                                        <Link
                                             href={project.liveUrl}
                                             target="_blank"
                                             rel="noopener noreferrer"
                                         >
                                             <ExternalLink className="mr-2 h-4 w-4" />
                                             Live Demo
-                                        </a>
+                                        </Link>
                                     </Button>
                                 )}
                             </div>

@@ -20,21 +20,35 @@ export default function BlogPosts() {
             </div>
             <div className="grid md:grid-cols-2 gap-6">
                 {featuredPosts.map((post) => (
-                    <Card key={post.id}>
-                        <CardHeader>
+                    <Card
+                        key={post.id}
+                        className="bg-[#0d0d0d] border border-gray-800 rounded-xl shadow-md hover:shadow-lg hover:border-gray-600 transition-all duration-300"
+                    >
+                        <CardHeader className="px-5 space-y-0">
+                            {/* Tags */}
                             <div className="flex flex-wrap gap-2 mb-2">
                                 {post.tags.map((tag) => (
-                                    <Button size={"sm"} key={tag} variant="outline">
+                                    <span
+                                        key={tag}
+                                        className="px-3 py-1 text-xs font-medium rounded-full bg-gray-800 text-gray-300 border border-gray-700 hover:text-white transition-colors"
+                                    >
                                         {tag}
-                                    </Button>
+                                    </span>
                                 ))}
                             </div>
-                            <CardTitle>
-                                <Link href={`/blog/${post.slug}`} className="hover:text-primary transition-colors">
+
+                            {/* Title */}
+                            <CardTitle className="text-xl font-semibold">
+                                <Link
+                                    href={`/blog/${post.slug}`}
+                                    className="text-white hover:text-green-400 transition-colors"
+                                >
                                     {post.title}
                                 </Link>
                             </CardTitle>
-                            <CardDescription>
+
+                            {/* Date */}
+                            <CardDescription className="text-sm text-gray-400">
                                 {new Date(post.publishedAt).toLocaleDateString("en-US", {
                                     year: "numeric",
                                     month: "long",
@@ -42,10 +56,13 @@ export default function BlogPosts() {
                                 })}
                             </CardDescription>
                         </CardHeader>
-                        <CardContent>
-                            <p className="text-muted-foreground">{post.excerpt}</p>
+
+                        {/* Excerpt */}
+                        <CardContent className=" px-5 pt-0">
+                            <p className="text-gray-300 leading-relaxed">{post.excerpt}</p>
                         </CardContent>
                     </Card>
+
                 ))}
             </div>
         </section>
