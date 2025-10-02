@@ -2,7 +2,8 @@
 
 import BlogPosts from "@/components/BlogPosts/BlogPosts";
 import Contact from "@/components/ContactSection/Contact";
-import { NavMenu } from "@/components/DesktopNavbar/DesktopNavbar";
+import { DesktopNavbar } from "@/components/DesktopNavbar";
+import { NavMenu } from "@/components/DesktopNavbar/NavMenu";
 // import { MobileNavHeader } from "@/components/DesktopNavbar/MobileNavbar";
 // import HeroSection from "@/components/HeroSection";
 import HeroDev from "@/components/HeroSection/HeroDev";
@@ -22,7 +23,7 @@ export default function Home() {
   return (
     <div className=" max-h-screen bg-black text-white">
       <main className="text-white bg-black box-border caret-transparent">
-        <NavMenu />
+        <DesktopNavbar />
         <HeroDev />
         <SkillsSection />
         <ToolsSection />
