@@ -1,0 +1,48 @@
+import { Github, Linkedin, Mail, Twitter } from "lucide-react";
+import Link from "next/link";
+
+export default function Contact() {
+    return (
+        <section className="py-24 bg-black">
+            <div className="container mx-auto px-4 text-center">
+                <h2 className="text-4xl md:text-5xl font-bold mb-16 text-white/90">Get in Touch</h2>
+                <div className="flex flex-wrap justify-center gap-6">
+                    <Link
+                        href="mailto:debater.mostafiz4372@gmail.com"
+                        className="flex items-center space-x-2 text-white/70 hover:text-green-300 transition-colors"
+                    >
+                        <Mail className="w-6 h-6" />
+                        <span>Email</span>
+                    </Link>
+                    <Link
+                        href="https://x.com/mostafizdev01"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center space-x-2 text-white/70 hover:text-green-300 transition-colors"
+                    >
+                        <Twitter className="w-6 h-6" />
+                        <span>Twitter</span>
+                    </Link>
+                    <Link
+                        href="https://linkedin.com/in/md-mostafiz-8233a2324"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center space-x-2 text-white/70 hover:text-green-300 transition-colors"
+                    >
+                        <Linkedin className="w-6 h-6" />
+                        <span>LinkedIn</span>
+                    </Link>
+                    <Link
+                        href="https://github.com/mostafizdev01"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center space-x-2 text-white/70 hover:text-green-300 transition-colors"
+                    >
+                        <Github className="w-6 h-6" />
+                        <span>GitHub</span>
+                    </Link>
+                </div>
+            </div>
+        </section>
+    )
+}

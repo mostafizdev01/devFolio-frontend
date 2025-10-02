@@ -12,7 +12,7 @@ export default function BlogPosts() {
             <div className="flex items-center justify-between mb-8">
                 <h2 className="text-3xl font-bold">Latest Blog Posts</h2>
                 <Link href="/blog">
-                    <Button variant="ghost">
+                    <Button variant="default">
                         View All Posts
                         <ArrowRight className="ml-2 h-4 w-4" />
                     </Button>

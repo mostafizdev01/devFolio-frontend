@@ -1,6 +1,7 @@
 "use client"
 
 import BlogPosts from "@/components/BlogPosts/BlogPosts";
+import Contact from "@/components/ContactSection/Contact";
 import { NavMenu } from "@/components/DesktopNavbar/DesktopNavbar";
 // import { MobileNavHeader } from "@/components/DesktopNavbar/MobileNavbar";
 // import HeroSection from "@/components/HeroSection";
@@ -27,6 +28,7 @@ export default function Home() {
         <ToolsSection />
         <Projects />
         <BlogPosts />
+        <Contact />
       </main>
       {/* <div className="absolute box-border caret-transparent block"></div> */}
     </div>
