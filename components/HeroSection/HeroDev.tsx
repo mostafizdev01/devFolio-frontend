@@ -15,7 +15,7 @@ export default function HeroDev() {
                     </span>
                 </h1>
                 <p className="text-xl md:text-2xl text-slate-100 font-semibold mb-5 text-balance">Full Stack Developer</p>
-                <p className="text-lg font-semibold text-slate-200 mb-12 max-w-2xl mx-auto text-pretty">
+                <p className="text-lg font-semibold text-slate-200 mb-12 max-w-2xl px-2 mx-auto text-pretty">
                     Passionate full-stack developer with 4+ years of experience building modern web applications. I love creating efficient, scalable solutions and staying up-to-date with the latest technologies.
                 </p>
                 <div className="flex justify-center"><CTAButtons /></div>

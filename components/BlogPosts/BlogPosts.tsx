@@ -8,11 +8,11 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "../Pr
 export default function BlogPosts() {
     const featuredPosts = mockBlogPosts.filter((post) => post.featured).slice(0, 2)
     return (
-        <section className="py-16 max-w-[1300px] mx-auto">
+        <section className="py-16 w-11/12 md:max-w-[1300px] mx-auto">
             <div className="flex items-center justify-between mb-8">
-                <h2 className="text-3xl font-bold">Latest Blog Posts</h2>
+                <h2 className=" text-xl md:text-3xl font-bold">Latest Blog Posts</h2>
                 <Link href="/blog">
-                    <Button variant="default">
+                    <Button variant="ghost">
                         View All Posts
                         <ArrowRight className="ml-2 h-4 w-4" />
                     </Button>

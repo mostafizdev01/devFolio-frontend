@@ -8,9 +8,9 @@ import Image from "next/image";
 export default function Projects() {
     const featuredProjects = mockProjects.filter((project) => project.featured).slice(0, 3)
     return (
-        <section className="py-16 max-w-[1300px] m-auto">
+        <section className="py-16 w-11/12 md:max-w-[1300px] m-auto">
             <div className="flex items-center justify-between mb-8">
-                <h2 className="text-3xl font-bold">Featured Projects</h2>
+                <h2 className=" text-xl md:text-3xl font-bold">Featured Projects</h2>
                 <Link href="/projects">
                     <Button variant="ghost">
                         View All Projects
