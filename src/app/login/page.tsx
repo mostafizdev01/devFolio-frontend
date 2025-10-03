@@ -18,6 +18,7 @@ import {
 import { Input } from "@/src/components/ui/input";
 import { Button } from "@/src/components/ui/button";
 import { useRouter } from "next/navigation";
+import Loading from "../loading";
 
 // ✅ Validation schema
 const loginSchema = z.object({
@@ -49,7 +50,7 @@ export default function SpotlightCard() {
     }
   }
 
-  const { data: session, status } = useSession();
+  const { status } = useSession();
   const route = useRouter()
 
 
@@ -61,7 +62,7 @@ export default function SpotlightCard() {
   }, [status, route])
 
   if(status === "loading"){
-    return <p>Loading...</p>
+    return <Loading />
   }
 
   return (
