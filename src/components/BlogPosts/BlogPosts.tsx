@@ -1,8 +1,8 @@
 import Link from "next/link";
 import { Button } from "../ui/button";
 import { ArrowRight } from "lucide-react";
-import { mockBlogPosts } from "@/lib/data";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "../ProjectsSection/ProjectCard";
+import { mockBlogPosts } from "@/src/lib/data";
 
 
 export default function BlogPosts() {

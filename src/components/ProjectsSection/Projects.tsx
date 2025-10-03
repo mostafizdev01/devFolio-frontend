@@ -1,9 +1,9 @@
 import { ArrowRight, ExternalLink, Github } from "lucide-react";
 import { Button } from "../ui/button";
 import Link from "next/link";
-import { mockProjects } from "@/lib/data";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "./ProjectCard";
 import Image from "next/image";
+import { mockProjects } from "@/src/lib/data";
 
 export default function Projects() {
     const featuredProjects = mockProjects.filter((project) => project.featured).slice(0, 3)
