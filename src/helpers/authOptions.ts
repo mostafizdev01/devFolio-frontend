@@ -1,6 +1,4 @@
 import CredentialsProvider from "next-auth/providers/credentials";
-import NextAuth from "next-auth"
-
 export const authOptions = {
     providers: [
         CredentialsProvider({
@@ -21,29 +19,40 @@ export const authOptions = {
                     const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_API}/user/login`, {
                         method: "POST",
                         headers: {
-                            "content--type": "application/json"
+                            "Content-type": "application/json"
                         },
                         body: JSON.stringify({
                             email: credentials.email,
                             password: credentials.password
                         })
                     })
-
                     console.log("Response From Backend", res);
-                    if(!res.ok){
+                    if (!res.ok) {
                         console.log("login faild", await res.text());
                         return null
                     }
 
                     const user = await res.json();
-                    return user
                     
+                    return {
+                        id: user.id,
+                        name: user.name,
+                        email: user.email,
+                    };
+
                 } catch (error) {
                     console.log(error)
+                    return null
                 }
             }
         })
     ],
+    secret: process.env.AUTH_SECRET,
+    pages: {
+        signIn: "/login"
+    }
 }
 
-export default NextAuth(authOptions)
+
+
+export default authOptions

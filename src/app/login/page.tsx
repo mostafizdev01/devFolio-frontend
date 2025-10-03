@@ -1,22 +1,23 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Eye, EyeOff, X } from "lucide-react";
 import Link from "next/link";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
-
-import { signIn } from "next-auth/react";
-import { Form,
+import { signIn, useSession } from "next-auth/react";
+import {
+  Form,
   FormControl,
   FormField,
   FormItem,
   FormLabel,
   FormMessage,
- } from "@/src/components/ui/form";
+} from "@/src/components/ui/form";
 import { Input } from "@/src/components/ui/input";
 import { Button } from "@/src/components/ui/button";
+import { useRouter } from "next/navigation";
 
 // ✅ Validation schema
 const loginSchema = z.object({
@@ -46,6 +47,21 @@ export default function SpotlightCard() {
     } catch (error) {
       console.error(error)
     }
+  }
+
+  const { data: session, status } = useSession();
+  const route = useRouter()
+
+
+  useEffect(() => {
+    if (status === "authenticated") {
+      route.push("/dashboard")
+    }
+
+  }, [status, route])
+
+  if(status === "loading"){
+    return <p>Loading...</p>
   }
 
   return (

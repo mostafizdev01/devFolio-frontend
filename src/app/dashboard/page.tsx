@@ -2,12 +2,12 @@
 
 import { useState } from "react";
 import { motion } from "framer-motion";
-import SidebarClient from "@/components/DashboardComponents/Sidebar";
-import Topbar from "@/components/DashboardComponents/Topbar";
-import BlogCard from "@/components/DashboardComponents/BlogCard";
-import ProjectCard from "@/components/DashboardComponents/ProjectCard";
-import BlogModal from "@/components/DashboardComponents/CreateBlog";
-import ProjectModal from "@/components/DashboardComponents/CreateProject";
+import SidebarClient from "@/src/components/DashboardComponents/Sidebar";
+import Topbar from "@/src/components/DashboardComponents/Topbar";
+import BlogModal from "@/src/components/DashboardComponents/CreateBlog";
+import ProjectModal from "@/src/components/DashboardComponents/CreateProject";
+import BlogCard from "@/src/components/DashboardComponents/BlogCard";
+import ProjectCard from "@/src/components/DashboardComponents/ProjectCard";
 
 export default function DashboardPage() {
   // demo data
@@ -29,25 +29,31 @@ export default function DashboardPage() {
 
   return (
     <div className="min-h-screen flex bg-black text-white">
-      <SidebarClient />
+      {/* Sidebar (hidden on mobile, visible on lg) */}
+      <div className="hidden lg:block">
+        <SidebarClient />
+      </div>
 
-      <div className="flex-1">
+      <div className="flex-1 flex flex-col">
+        {/* Topbar (includes menu button for mobile) */}
         <Topbar title="Admin Dashboard" />
-        <main className="p-6">
-          <div className="mb-6 flex items-center justify-between gap-4">
-            <h3 className="text-xl font-semibold">Content Management</h3>
+
+        <main className="flex-1 p-4 sm:p-6 lg:p-8">
+          <div className="mb-6 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+            <h3 className="text-lg sm:text-xl lg:text-2xl font-semibold">Content Management</h3>
             <div className="flex gap-2">
               <BlogModal />
-              <div></div>
               <ProjectModal>
-                <button className="px-4 py-2 rounded-md bg-emerald-500 text-black font-medium">+ Add New Project</button>
+                <button className="px-3 sm:px-4 py-2 rounded-md bg-emerald-500 text-black font-medium text-sm sm:text-base">
+                  + Add New Project
+                </button>
               </ProjectModal>
             </div>
           </div>
 
           {/* Blogs */}
-          <section className="mb-8">
-            <h4 className="text-lg font-semibold mb-4">Blogs</h4>
+          <section className="mb-10">
+            <h4 className="text-base sm:text-lg font-semibold mb-4">Blogs</h4>
             <motion.div layout className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
               {blogs.map((post) => (
                 <BlogCard key={post.id} post={post} onEdit={handleEditBlog} onDelete={handleDeleteBlog} />
@@ -57,7 +63,7 @@ export default function DashboardPage() {
 
           {/* Projects */}
           <section>
-            <h4 className="text-lg font-semibold mb-4">Projects</h4>
+            <h4 className="text-base sm:text-lg font-semibold mb-4">Projects</h4>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
               {projects.map((project) => (
                 <ProjectCard key={project.id} project={project} onEdit={handleEditProject} onDelete={handleDeleteProject} />
