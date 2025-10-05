@@ -5,9 +5,9 @@ import { motion } from "framer-motion";
 import SidebarClient from "@/src/components/DashboardComponents/Sidebar";
 import Topbar from "@/src/components/DashboardComponents/Topbar";
 import BlogModal from "@/src/components/DashboardComponents/CreateBlog";
-import ProjectModal from "@/src/components/DashboardComponents/CreateProject";
 import BlogCard from "@/src/components/DashboardComponents/BlogCard";
 import ProjectCard from "@/src/components/DashboardComponents/ProjectCard";
+import ProjectCardDialog from "@/src/components/DashboardComponents/CreateProject";
 
 export default function DashboardPage() {
   // demo data
@@ -43,11 +43,12 @@ export default function DashboardPage() {
             <h3 className="text-lg sm:text-xl lg:text-2xl font-semibold">Content Management</h3>
             <div className="flex gap-2">
               <BlogModal />
-              <ProjectModal>
+              <ProjectCardDialog />
+              {/* <ProjectModal>
                 <button className="px-3 sm:px-4 py-2 rounded-md bg-emerald-500 text-black font-medium text-sm sm:text-base">
                   + Add New Project
                 </button>
-              </ProjectModal>
+              </ProjectModal> */}
             </div>
           </div>
 
