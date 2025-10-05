@@ -1,95 +1,222 @@
 "use client";
 
 import { useState } from "react";
-import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "../ui/dialog";
-import { Label } from "../ui/label";
+import { z } from "zod";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import {
+    Dialog,
+    DialogContent,
+    DialogHeader,
+    DialogTitle,
+    DialogTrigger,
+} from "../ui/dialog";
+import {
+    Form,
+    FormControl,
+    FormField,
+    FormItem,
+    FormLabel,
+    FormMessage,
+} from "../ui/form";
 import { Input } from "../ui/input";
 import { Textarea } from "../ui/textarea";
-import { Button } from "../ui/button";
 import { Checkbox } from "../ui/checkbox";
+import { Button } from "../ui/button";
+import { toast } from "sonner";
 
-export default function ProjectModal({ children }: { children: React.ReactNode }) {
+// 🧠 Validation schema using Zod
+const projectSchema = z.object({
+    title: z.string().min(3, "Title is required"),
+    description: z.string().min(10, "Description is required"),
+    technologies: z.string().min(3, "At least one technology is required"),
+    githubUrl: z.string().url("Must be a valid URL").optional(),
+    liveUrl: z.string().url("Must be a valid URL").optional(),
+    imageUrl: z.string().url("Must be a valid image URL"),
+    featured: z.boolean(), /// ekhabe ifFeatured true korar jonno resolver && control a error show kortesilo.
+});
+
+type ProjectFormValues = z.infer<typeof projectSchema>;
+
+export default function ProjectCardDialog() {
     const [open, setOpen] = useState(false);
+    const [isSubmitting, setIsSubmitting] = useState(false);
+
+    const form = useForm<ProjectFormValues>({
+        resolver: zodResolver(projectSchema),
+        defaultValues: {
+            title: "",
+            description: "",
+            technologies: "",
+            githubUrl: "",
+            liveUrl: "",
+            imageUrl: "",
+        },
+    });
+
+    const onSubmit = async (values: ProjectFormValues) => {
+        setIsSubmitting(true);
+        try {
+            const dataToSend = {
+                ...values,
+                technologies: values.technologies.split(",").map((tech) => tech.trim()),
+            };
+
+            console.log("✅ Project Submitted:", dataToSend);
+
+            // API call
+           const res =  await fetch(`${process.env.NEXT_PUBLIC_BASE_API}/project/create-project`, {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify(dataToSend),
+            });
+
+            if(!res.ok){
+                console.log(res.text());
+                toast.error("Something wen't wrong!")
+            }
+            toast.success("Project Created!")
+            form.reset();
+            setOpen(false);
+        } catch (err) {
+            console.error("Error saving project:", err);
+        } finally {
+            setIsSubmitting(false);
+        }
+    };
 
     return (
         <Dialog open={open} onOpenChange={setOpen}>
-            <DialogTrigger asChild>{children}</DialogTrigger>
+            <DialogTrigger asChild>
+                <Button className="bg-green-500 text-black hover:bg-green-600">
+                    + Add New Project
+                </Button>
+            </DialogTrigger>
 
-            <DialogContent className="sm:max-w-lg bg-white dark:bg-zinc-900 text-black dark:text-white rounded-2xl shadow-lg">
+            <DialogContent className="sm:max-w-lg md:max-w-5xl bg-neutral-950 border border-neutral-800 text-white rounded-2xl shadow-2xl">
                 <DialogHeader>
-                    <DialogTitle className="text-xl font-semibold">
-                        Add New Project
+                    <DialogTitle className="text-2xl font-semibold text-green-500">
+                        Create Project
                     </DialogTitle>
                 </DialogHeader>
 
-                <form className="space-y-4">
-                    {/* Project Title */}
-                    <div>
-                        <Label htmlFor="title">Project Title</Label>
-                        <Input id="title" placeholder="Enter project title" className="mt-1" />
-                    </div>
-
-                    {/* Description */}
-                    <div>
-                        <Label htmlFor="description">Description</Label>
-                        <Textarea
-                            id="description"
-                            placeholder="Short description of the project..."
-                            className="mt-1 h-20"
+                <Form {...form}>
+                    <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+                        {/* Title */}
+                        <FormField
+                            control={form.control}
+                            name="title"
+                            render={({ field }) => (
+                                <FormItem>
+                                    <FormLabel>Title</FormLabel>
+                                    <FormControl>
+                                        <Input placeholder="Project Title" {...field} />
+                                    </FormControl>
+                                    <FormMessage />
+                                </FormItem>
+                            )}
                         />
-                    </div>
 
-                    {/* Technologies */}
-                    <div>
-                        <Label htmlFor="technologies">Technologies</Label>
-                        <Input
-                            id="technologies"
-                            placeholder="react, nextjs, tailwind"
-                            className="mt-1"
+                        {/* Description */}
+                        <FormField
+                            control={form.control}
+                            name="description"
+                            render={({ field }) => (
+                                <FormItem>
+                                    <FormLabel>Description</FormLabel>
+                                    <FormControl>
+                                        <Textarea className="h-24" placeholder="Project description..." {...field} />
+                                    </FormControl>
+                                    <FormMessage />
+                                </FormItem>
+                            )}
                         />
-                    </div>
 
-                    {/* Github URL */}
-                    <div>
-                        <Label htmlFor="githubUrl">Github URL</Label>
-                        <Input id="githubUrl" placeholder="https://github.com/user/repo" />
-                    </div>
+                        {/* Technologies */}
+                        <FormField
+                            control={form.control}
+                            name="technologies"
+                            render={({ field }) => (
+                                <FormItem>
+                                    <FormLabel>Technologies (comma separated)</FormLabel>
+                                    <FormControl>
+                                        <Input placeholder="Next.js, TailwindCSS, Framer Motion" {...field} />
+                                    </FormControl>
+                                    <FormMessage />
+                                </FormItem>
+                            )}
+                        />
 
-                    {/* Live URL */}
-                    <div>
-                        <Label htmlFor="liveUrl">Live Demo URL</Label>
-                        <Input id="liveUrl" placeholder="https://yourproject.com" />
-                    </div>
+                        {/* GitHub URL */}
+                        <FormField
+                            control={form.control}
+                            name="githubUrl"
+                            render={({ field }) => (
+                                <FormItem>
+                                    <FormLabel>GitHub URL</FormLabel>
+                                    <FormControl>
+                                        <Input placeholder="https://github.com/username/repo" {...field} />
+                                    </FormControl>
+                                    <FormMessage />
+                                </FormItem>
+                            )}
+                        />
 
-                    {/* Image URL */}
-                    <div>
-                        <Label htmlFor="imageUrl">Image URL</Label>
-                        <Input id="imageUrl" placeholder="https://link-to-image.jpg" />
-                    </div>
+                        {/* Live URL */}
+                        <FormField
+                            control={form.control}
+                            name="liveUrl"
+                            render={({ field }) => (
+                                <FormItem>
+                                    <FormLabel>Live Demo URL</FormLabel>
+                                    <FormControl>
+                                        <Input placeholder="https://yourproject.live" {...field} />
+                                    </FormControl>
+                                    <FormMessage />
+                                </FormItem>
+                            )}
+                        />
 
-                    {/* Featured */}
-                    <div className="flex items-center space-x-2">
-                        <Checkbox id="featured" />
-                        <Label htmlFor="featured">Mark as Featured</Label>
-                    </div>
+                        {/* Image URL */}
+                        <FormField
+                            control={form.control}
+                            name="imageUrl"
+                            render={({ field }) => (
+                                <FormItem>
+                                    <FormLabel>Image URL</FormLabel>
+                                    <FormControl>
+                                        <Input placeholder="https://via.placeholder.com/600x400.png" {...field} />
+                                    </FormControl>
+                                    <FormMessage />
+                                </FormItem>
+                            )}
+                        />
 
-                    {/* Actions */}
-                    <div className="flex justify-end gap-2">
-                        <Button
-                            variant="outline"
-                            onClick={() => setOpen(false)}
-                            type="button"
-                        >
-                            Cancel
-                        </Button>
-                        <Button
-                            type="submit"
-                            className="bg-green-600 text-white hover:bg-green-700"
-                        >
-                            Save Project
-                        </Button>
-                    </div>
-                </form>
+                        {/* Featured */}
+                        <FormField
+                            control={form.control}
+                            name="featured"
+                            render={({ field }) => (
+                                <FormItem className="flex items-center gap-2">
+                                    <FormControl>
+                                        <Checkbox checked={field.value} onCheckedChange={field.onChange} />
+                                    </FormControl>
+                                    <FormLabel>Featured Project</FormLabel>
+                                </FormItem>
+                            )}
+                        />
+
+                        {/* Buttons */}
+                        <div className="flex justify-end gap-3 pt-4">
+                            <Button type="button" variant="default" onClick={() => form.reset()}>
+                                Cancel
+                            </Button>
+                            <Button type="submit" disabled={isSubmitting} className="bg-green-600 text-white hover:bg-green-700">
+                                {isSubmitting ? "Posting..." : "Post a Project"}
+                            </Button>
+                        </div>
+                    </form>
+                </Form>
             </DialogContent>
         </Dialog>
     );
