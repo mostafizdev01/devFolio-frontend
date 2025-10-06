@@ -1,5 +1,3 @@
-'use client'
-
 import React from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
@@ -14,60 +12,64 @@ type Blog = {
   featured?: boolean;
 };
 
-export default function BlogsPage() {
+export default async function BlogsPage() {
   // Fake blog data
-  const blogs: Blog[] = [
-    {
-      id: "b1",
-      title: "Understanding React 18 Features",
-      slug: "react-18-features",
-      excerpt: "Explore the new features introduced in React 18 and how they improve performance and developer experience.",
-      publishedAt: "2025-09-25",
-      tags: ["React", "JavaScript", "Frontend"],
-      featured: true,
-    },
-    {
-      id: "b2",
-      title: "Next.js 15: What's New?",
-      slug: "nextjs-15-whats-new",
-      excerpt: "Next.js 15 introduces powerful new capabilities for faster builds and server-side rendering improvements.",
-      publishedAt: "2025-09-20",
-      tags: ["Next.js", "SSR", "React"],
-    },
-    {
-      id: "b3",
-      title: "TailwindCSS Tips & Tricks",
-      slug: "tailwind-tips-tricks",
-      excerpt: "Learn some advanced TailwindCSS techniques to create stunning UI quickly and efficiently.",
-      publishedAt: "2025-09-18",
-      tags: ["TailwindCSS", "CSS", "Design"],
-    },
-    {
-      id: "b4",
-      title: "Framer Motion Animations",
-      slug: "framer-motion-animations",
-      excerpt: "Step-by-step guide to building smooth, performant animations in React using Framer Motion.",
-      publishedAt: "2025-09-15",
-      tags: ["Framer Motion", "Animations", "React"],
-      featured: true,
-    },
-    {
-      id: "b5",
-      title: "Fullstack Project Ideas",
-      slug: "fullstack-project-ideas",
-      excerpt: "A list of fullstack project ideas to help you practice and showcase your skills.",
-      publishedAt: "2025-09-10",
-      tags: ["Fullstack", "Projects", "Ideas"],
-    },
-    {
-      id: "b6",
-      title: "Understanding Prisma ORM",
-      slug: "prisma-orm-guide",
-      excerpt: "Learn how Prisma ORM simplifies database access and management in modern web apps.",
-      publishedAt: "2025-09-05",
-      tags: ["Prisma", "Database", "Node.js"],
-    },
-  ];
+  // const blogs: Blog[] = [
+  //   {
+  //     id: "b1",
+  //     title: "Understanding React 18 Features",
+  //     slug: "react-18-features",
+  //     excerpt: "Explore the new features introduced in React 18 and how they improve performance and developer experience.",
+  //     publishedAt: "2025-09-25",
+  //     tags: ["React", "JavaScript", "Frontend"],
+  //     featured: true,
+  //   },
+  //   {
+  //     id: "b2",
+  //     title: "Next.js 15: What's New?",
+  //     slug: "nextjs-15-whats-new",
+  //     excerpt: "Next.js 15 introduces powerful new capabilities for faster builds and server-side rendering improvements.",
+  //     publishedAt: "2025-09-20",
+  //     tags: ["Next.js", "SSR", "React"],
+  //   },
+  //   {
+  //     id: "b3",
+  //     title: "TailwindCSS Tips & Tricks",
+  //     slug: "tailwind-tips-tricks",
+  //     excerpt: "Learn some advanced TailwindCSS techniques to create stunning UI quickly and efficiently.",
+  //     publishedAt: "2025-09-18",
+  //     tags: ["TailwindCSS", "CSS", "Design"],
+  //   },
+  //   {
+  //     id: "b4",
+  //     title: "Framer Motion Animations",
+  //     slug: "framer-motion-animations",
+  //     excerpt: "Step-by-step guide to building smooth, performant animations in React using Framer Motion.",
+  //     publishedAt: "2025-09-15",
+  //     tags: ["Framer Motion", "Animations", "React"],
+  //     featured: true,
+  //   },
+  //   {
+  //     id: "b5",
+  //     title: "Fullstack Project Ideas",
+  //     slug: "fullstack-project-ideas",
+  //     excerpt: "A list of fullstack project ideas to help you practice and showcase your skills.",
+  //     publishedAt: "2025-09-10",
+  //     tags: ["Fullstack", "Projects", "Ideas"],
+  //   },
+  //   {
+  //     id: "b6",
+  //     title: "Understanding Prisma ORM",
+  //     slug: "prisma-orm-guide",
+  //     excerpt: "Learn how Prisma ORM simplifies database access and management in modern web apps.",
+  //     publishedAt: "2025-09-05",
+  //     tags: ["Prisma", "Database", "Node.js"],
+  //   },
+  // ];
+
+  // const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_API}/blog`);
+  // const blogs = await res.json();
+  // console.log("this is blog pages")
 
   return (
     <div className="min-h-screen bg-black text-white px-4 sm:px-8 py-12">

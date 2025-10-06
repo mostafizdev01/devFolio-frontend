@@ -3,6 +3,8 @@
 import Link from "next/link";
 import { useState } from "react";
 import { Home, FileText, Box, Users, Settings, Menu, X } from "lucide-react";
+import { Button } from "../ui/button";
+import { signOut } from "next-auth/react";
 
 const items = [
     { label: "Dashboard", href: "/dashboard", icon: <Home className="h-5 w-5" /> },
@@ -54,9 +56,9 @@ export default function SidebarClient() {
                 </nav>
 
                 <div className="p-4 border-t border-slate-800">
-                    <button className="w-full text-left px-3 py-2 rounded-md hover:bg-zinc-800 transition-colors">
+                    <Button onClick={()=> signOut()} variant="destructive" className="w-full cursor-pointer text-left px-3 py-2 rounded-md hover:bg-zinc-800 transition-colors">
                         Sign out
-                    </button>
+                    </Button>
                 </div>
             </div>
 

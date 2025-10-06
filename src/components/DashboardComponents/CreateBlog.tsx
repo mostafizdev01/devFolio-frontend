@@ -99,7 +99,7 @@ export default function BlogModal() {
         <Dialog open={open} onOpenChange={setOpen}>
             {/* 🟢 Trigger Button */}
             <DialogTrigger asChild>
-                <button className="px-4 py-2 rounded-md bg-green-500 text-black font-medium hover:bg-green-600 transition">
+                <button className="px-4 py-2 rounded-md bg-cyan-500 text-black font-medium hover:bg-cyan-600 transition">
                     + Add New Blog
                 </button>
             </DialogTrigger>

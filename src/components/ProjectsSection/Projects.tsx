@@ -19,9 +19,9 @@ export default function Projects() {
                 </Link>
             </div>
             <div className="grid md:grid-cols-3 gap-6">
-                {featuredProjects.map((project) => (
+                {featuredProjects.map((project, index) => (
                     <Card
-                        key={project.id}
+                        key={index}
                         className="overflow-hidden bg-[#0d0d0d] dark:bg-[#0d0d0d] border border-gray-800 rounded-xl shadow-lg hover:shadow-2xl hover:border-gray-600 transition-all duration-300"
                     >
                         {/* Image Section */}
