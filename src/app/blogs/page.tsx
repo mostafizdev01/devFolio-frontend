@@ -111,7 +111,7 @@ export default function BlogsPage() {
 
               {/* Read More Button */}
               <Link
-                href={`/blog/${blog.slug}`}
+                href={`/blogs/${blog.id}`}
                 aria-label={`Read more about ${blog.title}`}
               >
                 <Button className=" cursor-pointer" variant={"secondary"} >Read More</Button>
