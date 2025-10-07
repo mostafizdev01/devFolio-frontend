@@ -1,16 +1,23 @@
 "use client";
 
-import { Edit3, Trash2 } from "lucide-react";
+import { Trash2 } from "lucide-react";
+import UpdateBlogModal from "./UpdateBlog";
 
-export default function BlogCard({
-    post,
-    onEdit,
-    onDelete,
-}: {
-    post: { id: string; title: string; excerpt: string; publishedAt: string; status?: string; tags?: string[] };
-    onEdit: (id: string) => void;
-    onDelete: (id: string) => void;
+export default function BlogCard({ post }: {
+    post: {
+        id: string;
+        title: string;
+        excerpt: string;
+        publishedAt: string;
+        status?: string;
+        tags?: string[]
+    };
 }) {
+
+    const handleDelete = (id: string) => {
+        console.log(id);
+    }
+
     return (
         <article className="bg-[#0b0b0c] border border-slate-800 rounded-2xl p-4 shadow-sm hover:shadow-md transition-shadow">
             <div className="flex items-start justify-between gap-3">
@@ -25,10 +32,8 @@ export default function BlogCard({
 
                 <div className="flex flex-col items-end gap-2">
                     <div className="flex gap-2">
-                        <button onClick={() => onEdit(post.id)} className="p-2 rounded-md hover:bg-zinc-800 transition-colors">
-                            <Edit3 className="h-4 w-4 text-slate-300" />
-                        </button>
-                        <button onClick={() => onDelete(post.id)} className="p-2 rounded-md hover:bg-rose-600/20 transition-colors">
+                        <UpdateBlogModal id={post.id} />
+                        <button onClick={() => handleDelete(post.id)} className="p-2 rounded-md hover:bg-rose-600/20 transition-colors">
                             <Trash2 className="h-4 w-4 text-rose-400" />
                         </button>
                     </div>

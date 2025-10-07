@@ -2,16 +2,16 @@
 
 import Link from "next/link";
 import { useState } from "react";
-import { Home, FileText, Box, Users, Settings, Menu, X } from "lucide-react";
+import { Home, FileText, Box, Menu, X, LayoutDashboard, UserRound } from "lucide-react";
 import { Button } from "../ui/button";
 import { signOut } from "next-auth/react";
 
 const items = [
-    { label: "Dashboard", href: "/dashboard", icon: <Home className="h-5 w-5" /> },
+    { label: "Home", href: "/", icon: <Home className="h-5 w-5" /> },
+    { label: "Dashboard", href: "/dashboard", icon: <LayoutDashboard className="h-5 w-5" /> },
     { label: "Blogs", href: "/dashboard/blogs", icon: <FileText className="h-5 w-5" /> },
     { label: "Projects", href: "/dashboard/projects", icon: <Box className="h-5 w-5" /> },
-    { label: "Users", href: "/dashboard/users", icon: <Users className="h-5 w-5" /> },
-    { label: "Settings", href: "/dashboard/settings", icon: <Settings className="h-5 w-5" /> },
+    { label: "Profile", href: "/dashboard", icon: <UserRound className="h-5 w-5" /> },
 ];
 
 export default function SidebarClient() {
@@ -34,7 +34,7 @@ export default function SidebarClient() {
             <div className={`hidden md:flex md:flex-col h-full`}>
                 <div className="p-4 flex items-center gap-3">
                     <div className="h-10 w-10 rounded-lg bg-gradient-to-br from-cyan-400 to-indigo-500 flex items-center justify-center text-black font-bold">
-                        AD
+                        M
                     </div>
                     <div>
                         <div className="font-semibold">Admin Panel</div>
@@ -43,9 +43,9 @@ export default function SidebarClient() {
                 </div>
 
                 <nav className="flex-1 p-2 space-y-1">
-                    {items.map((it) => (
+                    {items.map((it, index) => (
                         <Link
-                            key={it.href}
+                            key={index}
                             href={it.href}
                             className="flex items-center gap-3 px-3 py-2 rounded-md text-sm hover:bg-zinc-800 transition-colors"
                         >
@@ -65,9 +65,9 @@ export default function SidebarClient() {
             {/* Collapsed (mobile) view */}
             <div className={`md:hidden ${collapsed ? "block" : "hidden"} bg-[#050507] border-t border-slate-800`}>
                 <nav className="p-2 grid grid-cols-5 gap-2">
-                    {items.map((it) => (
+                    {items.map((it, index) => (
                         <Link
-                            key={it.href}
+                            key={index}
                             href={it.href}
                             className="flex flex-col items-center gap-1 p-2 rounded-md hover:bg-zinc-800 transition-colors"
                         >

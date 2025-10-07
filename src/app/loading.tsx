@@ -86,9 +86,9 @@ export default function RocketLoader({ onFinish }: RocketLoaderProps) {
         <main className="min-h-screen w-full flex items-center justify-center bg-gradient-to-b from-black/95 via-[#020617] to-[#05060a] overflow-hidden relative">
             {/* Stars */}
             <div className="absolute inset-0 pointer-events-none">
-                {stars.map((s) => (
+                {stars.map((s, index) => (
                     <motion.span
-                        key={s.key}
+                        key={index}
                         className="absolute rounded-full bg-white"
                         style={{ width: s.size, height: s.size, top: s.top, left: s.left, opacity: 0.8 }}
                         animate={prefersReduced ? {} : { opacity: [0.2, 1, 0.2] }}
