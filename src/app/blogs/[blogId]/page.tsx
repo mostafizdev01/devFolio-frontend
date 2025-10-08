@@ -34,6 +34,9 @@ export default async function BlogDetailsPage({ params }: BlogDetailsPageProps) 
 
     return (
         <div className="min-h-screen bg-black flex flex-col justify-center items-center text-white px-4 sm:px-8 py-12">
+
+            {/* Hero Section */}
+            <header className="mb-8">
             {/* Back Button */}
             <Link
                 href="/blogs"
@@ -42,9 +45,6 @@ export default async function BlogDetailsPage({ params }: BlogDetailsPageProps) 
                 <ArrowLeft className="w-5 h-5" />
                 Back
             </Link>
-
-            {/* Hero Section */}
-            <header className="mb-8">
                 <h1 className="text-4xl sm:text-5xl font-bold mb-2">{blog.title}</h1>
                 {blog.featured && (
                     <span className="inline-block bg-green-500 text-black text-xs font-semibold px-2 py-1 rounded-full mb-2">
@@ -72,14 +72,14 @@ export default async function BlogDetailsPage({ params }: BlogDetailsPageProps) 
                         </span>
                     ))}
                 </div>
-            </header>
-
             {/* Blog Content */}
-            <p className="prose prose-invert md:w-[970px]">
+            <p className="prose prose-invert md:w-[970px] mt-5">
                 {blog.content.split("\n").map((line, idx) => (
                     <p key={idx}>{line}</p>
                 ))}
             </p>
+            </header>
+
         </div>
     );
 }
