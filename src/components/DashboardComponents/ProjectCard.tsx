@@ -1,8 +1,10 @@
 "use client";
 
-import { Trash2, ExternalLink, Github, Star } from "lucide-react";
+import { Trash2, ExternalLink, Github, Star, X, Check } from "lucide-react";
 import Image from "next/image";
 import UpdateProject from "./UpdateProject";
+import { toast } from "sonner";
+import { useState } from "react";
 
 export default function ProjectCard({ project }: {
     project: {
@@ -15,8 +17,30 @@ export default function ProjectCard({ project }: {
         imageUrl: string;
         featured: boolean;
     }
-    }) 
-{
+}) {
+    const [isModalOpen, setIsModalOpen] = useState(false);
+    const [isDeleting, setIsDeleting] = useState(false);
+
+    const handleDelete = async (id: string) => {
+        try {
+            setIsDeleting(true);
+
+            const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_API}/project/${id}`, {
+                method: "DELETE",
+            });
+
+            if (!res.ok) throw new Error("Failed to delete blog");
+
+            toast.success("Project deleted successfully ✅");
+            setIsModalOpen(false);
+            window.location.reload(); // Optional: you can replace with state update
+        } catch (err) {
+            console.error(err);
+            toast.error("Failed to delete the project ❌");
+        } finally {
+            setIsDeleting(false);
+        }
+    };
 
     return (
         <div className="bg-[#0b0b0c] border border-slate-800 rounded-2xl overflow-hidden shadow-md hover:shadow-lg transition-all duration-300">
@@ -85,13 +109,52 @@ export default function ProjectCard({ project }: {
                 <div className="flex gap-2">
                     <UpdateProject id={project.id} />
                     <button
-                        // onClick={() => onDelete(project.id)}
+                        onClick={() =>setIsModalOpen(true)}
                         className="p-2 rounded-md hover:bg-rose-600/20 transition-colors"
                     >
                         <Trash2 className="h-4 w-4 text-rose-400" />
                     </button>
                 </div>
             </div>
+            {/* delete modal  */}
+
+            {isModalOpen && (
+                <div className="fixed inset-0 bg-black/70 flex items-center justify-center z-50">
+                    <div className="bg-[#111] border border-slate-800 rounded-xl p-6 w-[90%] sm:w-[400px] text-center shadow-lg">
+                        <h3 className="text-lg font-semibold text-white mb-2">
+                            Confirm Delete
+                        </h3>
+                        <p className="text-slate-400 mb-6">
+                            Are you sure you want to delete <br />
+                            This action cannot be undone.
+                        </p>
+
+                        <div className="flex justify-center gap-4">
+                            <button
+                                onClick={() => setIsModalOpen(false)}
+                                disabled={isDeleting}
+                                className="flex items-center gap-1 px-4 py-2 bg-slate-800 hover:bg-slate-700 rounded-md text-slate-300 transition-colors"
+                            >
+                                <X className="w-4 h-4" /> Cancel
+                            </button>
+                            <button
+                                onClick={() => handleDelete(project?.id)}
+                                disabled={isDeleting}
+                                className="flex items-center gap-1 px-4 py-2 bg-rose-600 hover:bg-rose-700 rounded-md text-white transition-colors"
+                            >
+                                {isDeleting ? (
+                                    "Deleting..."
+                                ) : (
+                                    <>
+                                        <Check className="w-4 h-4" /> Yes, Delete
+                                    </>
+                                )}
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            )}
+
         </div>
     );
 }
