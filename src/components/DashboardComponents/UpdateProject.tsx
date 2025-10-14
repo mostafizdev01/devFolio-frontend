@@ -129,7 +129,7 @@ export default function UpdateProject({ id }: { id: string }) {
             }
             toast.success("Project Updated Successfull!")
             form.reset();
-            // setOpen(false);
+            setOpen(false);
         } catch (err) {
             console.error("Error saving project:", err);
         } finally {
