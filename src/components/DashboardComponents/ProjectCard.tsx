@@ -1,13 +1,10 @@
 "use client";
 
-import { Edit3, Trash2, ExternalLink, Github, Star } from "lucide-react";
+import { Trash2, ExternalLink, Github, Star } from "lucide-react";
 import Image from "next/image";
+import UpdateProject from "./UpdateProject";
 
-export default function ProjectCard({
-    project,
-    onEdit,
-    onDelete,
-}: {
+export default function ProjectCard({ project }: {
     project: {
         id: string;
         title: string;
@@ -17,18 +14,18 @@ export default function ProjectCard({
         liveUrl?: string;
         imageUrl: string;
         featured: boolean;
-    };
-    onEdit: (id: string) => void;
-    onDelete: (id: string) => void;
-}) {
+    }
+    }) 
+{
+
     return (
         <div className="bg-[#0b0b0c] border border-slate-800 rounded-2xl overflow-hidden shadow-md hover:shadow-lg transition-all duration-300">
             {/* 🔹 Image section */}
             <div className="relative w-full h-40 overflow-hidden">
                 <Image
-                width={300}
-                height={300}
-                    src={project.imageUrl}
+                    width={500}
+                    height={500}
+                    src={"https://img.freepik.com/free-vector/creative-gradient-code-logo_23-2148820572.jpg"}
                     alt={project.title}
                     className="object-cover w-full h-full transition-transform hover:scale-105"
                 />
@@ -86,14 +83,9 @@ export default function ProjectCard({
 
                 {/* Action buttons */}
                 <div className="flex gap-2">
+                    <UpdateProject id={project.id} />
                     <button
-                        onClick={() => onEdit(project.id)}
-                        className="p-2 rounded-md hover:bg-zinc-800 transition-colors"
-                    >
-                        <Edit3 className="h-4 w-4 text-slate-300" />
-                    </button>
-                    <button
-                        onClick={() => onDelete(project.id)}
+                        // onClick={() => onDelete(project.id)}
                         className="p-2 rounded-md hover:bg-rose-600/20 transition-colors"
                     >
                         <Trash2 className="h-4 w-4 text-rose-400" />
