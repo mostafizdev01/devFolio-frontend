@@ -1,12 +1,43 @@
+"use-client"
+import { useEffect, useState } from "react";
 import { ArrowRight, ExternalLink, Github } from "lucide-react";
 import { Button } from "../ui/button";
 import Link from "next/link";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "./ProjectCard";
 import Image from "next/image";
-import { mockProjects } from "@/src/lib/data";
+
+
+/// project interface 
+interface IProject {
+    id: string;
+    title: string;
+    description: string;
+    technologies: string[];
+    githubUrl?: string;
+    liveUrl?: string;
+    imageUrl: string;
+    featured: boolean;
+}
 
 export default function Projects() {
-    const featuredProjects = mockProjects.filter((project) => project.featured).slice(0, 3)
+    const [projects, setProjects] = useState([]);
+    
+    useEffect(() => {
+        const getProjects = async () => {
+            try {
+                const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_API}/project`, {
+                    cache: "no-store",
+                });
+                const data = await res.json();
+                setProjects(data?.data || []);
+            } catch (error) {
+                console.error("Error fetching projects:", error);
+            }
+        };
+
+        getProjects();
+    }, []);
+
     return (
         <section className="py-16 w-11/12 md:max-w-[1300px] m-auto">
             <div className="flex items-center justify-between mb-8">
@@ -19,9 +50,9 @@ export default function Projects() {
                 </Link>
             </div>
             <div className="grid md:grid-cols-3 gap-6">
-                {featuredProjects.map((project, index) => (
+                {projects && projects.map((project:IProject) => (
                     <Card
-                        key={index}
+                        key={project.id}
                         className="overflow-hidden bg-[#0d0d0d] dark:bg-[#0d0d0d] border border-gray-800 rounded-xl shadow-lg hover:shadow-2xl hover:border-gray-600 transition-all duration-300"
                     >
                         {/* Image Section */}
@@ -29,7 +60,7 @@ export default function Projects() {
                             <Image
                                 width={500}
                                 height={500}
-                                src={project.imageUrl || "/placeholder.svg"}
+                                src={"https://media.licdn.com/dms/image/v2/D4D12AQHnICrUfyxYWg/article-cover_image-shrink_600_2000/article-cover_image-shrink_600_2000/0/1727345945436?e=2147483647&v=beta&t=lc308h3Ud_k0-xVnBCux6qr8C0_CKq9_fcXgyvzGSps"}
                                 alt={project.title}
                                 className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                             />
@@ -48,7 +79,7 @@ export default function Projects() {
                         </CardHeader>
 
                         {/* Card Content */}
-                        <CardContent className="p-4">
+                        <CardContent className="px-4">
                             {/* Technologies */}
                             <div className="flex flex-wrap gap-2 mb-4">
                                 {project.technologies.map((tech) => (
