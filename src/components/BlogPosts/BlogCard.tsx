@@ -6,7 +6,7 @@ import { Blog } from "./type";
 export default function BlogCard({ blog }: { blog: Blog }) {
     return (
         <div>
-            <div className=" bg-black text-white sm:px-8 md:px-3 py-1">
+            <div className=" bg-black text-white sm:px-8 md:px-0 py-1">
                 {/* Hero Section */}
                 {/* <section className="text-center mb-16">
                     <h1 className="text-4xl sm:text-5xl font-bold tracking-tight mb-2">

@@ -19,8 +19,10 @@ interface IProject {
     featured: boolean;
 }
 
-export default function Projects() {
+export default function Projects({limit, button}: {limit: number, button:boolean}) {
     const [projects, setProjects] = useState([]);
+
+    const projectsFilterData = limit ? projects.filter((project)=> project).slice(0, limit) : projects;
     
     useEffect(() => {
         const getProjects = async () => {
@@ -42,15 +44,23 @@ export default function Projects() {
         <section className="py-16 w-11/12 md:max-w-[1300px] m-auto">
             <div className="flex items-center justify-between mb-8">
                 <h2 className=" text-xl md:text-3xl font-bold">Featured Projects</h2>
-                <Link href="/projects">
+                {
+                    button ?                 <Link href="/projects">
                     <Button variant="ghost">
                         View All Projects
                         <ArrowRight className="ml-2 h-4 w-4" />
                     </Button>
+                </Link> : 
+                                <Link href="/">
+                    <Button variant="ghost">
+                        Back Home
+                        <ArrowRight className="ml-2 h-4 w-4" />
+                    </Button>
                 </Link>
+                }
             </div>
             <div className="grid md:grid-cols-3 gap-6">
-                {projects && projects.map((project:IProject) => (
+                {projects && projectsFilterData.map((project:IProject) => (
                     <Card
                         key={project.id}
                         className="overflow-hidden bg-[#0d0d0d] dark:bg-[#0d0d0d] border border-gray-800 rounded-xl shadow-lg hover:shadow-2xl hover:border-gray-600 transition-all duration-300"

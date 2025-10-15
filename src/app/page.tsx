@@ -21,7 +21,7 @@ export default function Home() {
         <HeroDev />
         <SkillsSection />
         <ToolsSection />
-        <Projects />
+        <Projects limit={3} button={true} />
         <BlogPosts />
         <Contact />
       </main>

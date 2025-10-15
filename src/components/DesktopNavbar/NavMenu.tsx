@@ -29,7 +29,7 @@ export const NavMenu = () => {
       </div>
       <div className="box-border caret-transparent min-h-0 min-w-0 md:min-h-[auto] md:min-w-[auto]">
         <Link
-          href="/project"
+          href="/projects"
           className="box-border caret-transparent tracking-[2px] px-8 border-r border-solid border-white/10 hover:text-teal-400"
         >
           Projects

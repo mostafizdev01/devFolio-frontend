@@ -68,7 +68,7 @@ export default function BlogPosts() {
         <section className="py-16 w-11/12 md:max-w-[1300px] mx-auto">
             <div className="flex items-center justify-between mb-8">
                 <h2 className="text-xl md:text-3xl font-bold">Latest Blog Posts</h2>
-                <Link href="/blog">
+                <Link href="/blogs">
                     <Button variant="ghost">
                         View All Posts
                         <ArrowRight className="ml-2 h-4 w-4" />
@@ -76,7 +76,7 @@ export default function BlogPosts() {
                 </Link>
             </div>
 
-            <div className="grid md:grid-cols-2 gap-2">
+            <div className="grid md:grid-cols-2 gap-5">
                 {filteringData.map((post) => (
                   <BlogCard key={post.id} blog={post} />
                 ))}
