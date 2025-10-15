@@ -24,6 +24,11 @@ export default function BlogPosts() {
     const [blogs, setBlogs] = useState<Blog[]>([]);
     const [loading, setLoading] = useState(true);
 
+    const filteringData = blogs.filter((blog)=> blog).slice(0, 2)
+
+    console.log(blogs);
+    
+
     useEffect(() => {
         const fetchBlogs = async () => {
             try {
@@ -72,7 +77,7 @@ export default function BlogPosts() {
             </div>
 
             <div className="grid md:grid-cols-2 gap-2">
-                {blogs.map((post) => (
+                {filteringData.map((post) => (
                   <BlogCard key={post.id} blog={post} />
                 ))}
             </div>

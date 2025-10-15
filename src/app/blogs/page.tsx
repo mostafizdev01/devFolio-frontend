@@ -2,16 +2,8 @@
 
 import { useEffect, useState } from "react";
 import BlogCard from "@/src/components/BlogPosts/BlogCard";
+import { Blog } from "@/src/components/BlogPosts/type";
 
-interface Blog {
-  id: string;
-  title: string;
-  slug: string;
-  excerpt: string;
-  publishedAt: string;
-  tags: string[];
-  featured?: boolean;
-}
 
 export default function BlogsPage() {
   const [blogs, setBlogs] = useState<Blog[]>([]);
