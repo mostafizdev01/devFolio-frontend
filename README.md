@@ -1,2 +1,2 @@
-DevFolio-frontend
+DevFolio
 
