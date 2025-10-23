@@ -34,7 +34,6 @@ Perfect for showcasing your projects, writing technical blogs, and building your
 
 ## 🧱 Folder Structure
 
-<details>
     devfolio/
 ├── public/
 │   ├── favicon.ico
@@ -113,7 +112,6 @@ Perfect for showcasing your projects, writing technical blogs, and building your
 ├── tailwind.config.ts
 ├── tsconfig.json
 └── README.md
-</details>
 ---
 
 ## 📝 Blog Data Example
