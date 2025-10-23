@@ -35,84 +35,85 @@ Perfect for showcasing your projects, writing technical blogs, and building your
 ## 🧱 Folder Structure
 
 devfolio/
-├── public/                         # Static files (images, icons, etc.)
+├── public/                          # Static assets (images, icons, etc.)
 │   ├── favicon.ico
 │   ├── logo.png
 │   └── blog/
 │       └── images/
 │
 ├── src/
-│   ├── app/                        # Next.js App Router pages
-│   │   ├── (site)/                 # Public-facing routes
-│   │   │   ├── page.tsx            # Home page
+│   ├── app/                         # Next.js App Router pages
+│   │   ├── (site)/                  # Public-facing routes
+│   │   │   ├── page.tsx             # Home page
 │   │   │   ├── blog/
-│   │   │   │   ├── page.tsx        # Blog list page
-│   │   │   │   └── [slug]/page.tsx # Single blog details
-│   │   │   └── projects/
-│   │   │       ├── page.tsx        # Projects showcase
-│   │   │       └── [id]/page.tsx   # Single project details
+│   │   │   │   ├── page.tsx         # Blog list page
+│   │   │   │   └── [slug]/page.tsx  # Single blog details
+│   │   │   ├── projects/
+│   │   │   │   ├── page.tsx         # Project showcase
+│   │   │   │   └── [id]/page.tsx    # Single project details
+│   │   │   └── about/page.tsx       # About page
 │   │   │
-│   │   ├── (dashboard)/            # Optional admin/dashboard section
+│   │   ├── (dashboard)/             # Optional admin section
 │   │   │   ├── layout.tsx
 │   │   │   ├── page.tsx
 │   │   │   └── posts/
 │   │   │       ├── create/page.tsx
 │   │   │       └── edit/[id]/page.tsx
 │   │   │
-│   │   ├── api/                    # API routes (server actions)
+│   │   ├── api/                     # Server-side routes (API)
 │   │   │   ├── posts/
-│   │   │   │   ├── route.ts        # CRUD routes for posts
+│   │   │   │   └── route.ts         # CRUD for posts
 │   │   │   └── contact/
-│   │   │       └── route.ts        # Contact form submit
+│   │   │       └── route.ts         # Contact form endpoint
 │   │   │
-│   │   ├── layout.tsx              # Root layout
-│   │   └── globals.css             # Global styles
+│   │   ├── layout.tsx               # Root layout
+│   │   └── globals.css              # Global styles
 │   │
-│   ├── components/                 # Reusable UI Components
-│   │   ├── ui/                     # ShadCN-based UI (Button, Card, etc.)
-│   │   ├── layout/                 # Navbar, Footer, ThemeToggle, etc.
-│   │   ├── blog/                   # BlogCard, BlogList, BlogHeader, etc.
-│   │   ├── projects/               # ProjectCard, ProjectList, etc.
-│   │   └── shared/                 # Reusable small components (Badge, Tag)
+│   ├── components/                  # Reusable UI Components
+│   │   ├── ui/                      # ShadCN / Base UI components
+│   │   ├── layout/                  # Navbar, Footer, ThemeSwitcher
+│   │   ├── blog/                    # BlogCard, BlogList, etc.
+│   │   ├── projects/                # ProjectCard, ProjectList
+│   │   └── shared/                  # Small reusable pieces (Tag, Badge)
 │   │
-│   ├── data/                       # Static/local data
-│   │   ├── blogs.ts                # Blog content (if file-based)
-│   │   ├── projects.ts             # Project data
-│   │   └── socialLinks.ts          # Social links, contact info
+│   ├── data/                        # Local/static data files
+│   │   ├── blogs.ts
+│   │   ├── projects.ts
+│   │   └── socialLinks.ts
 │   │
-│   ├── lib/                        # Utility and helper functions
-│   │   ├── utils.ts                # Common helpers
-│   │   ├── seo.ts                  # SEO config
-│   │   ├── prisma.ts               # Prisma client instance
-│   │   ├── db.ts                   # DB connection (MongoDB/Mongoose)
-│   │   └── markdown.ts             # Markdown parser setup
+│   ├── lib/                         # Utilities, database, SEO
+│   │   ├── utils.ts
+│   │   ├── seo.ts
+│   │   ├── prisma.ts
+│   │   ├── db.ts
+│   │   └── markdown.ts
 │   │
-│   ├── types/                      # TypeScript interfaces & types
+│   ├── types/                       # TypeScript interfaces/types
 │   │   ├── blog.d.ts
 │   │   ├── project.d.ts
 │   │   └── index.d.ts
 │   │
-│   ├── hooks/                      # Custom React hooks
+│   ├── hooks/                       # Custom React hooks
 │   │   ├── useTheme.ts
 │   │   └── useScrollPosition.ts
 │   │
-│   ├── styles/                     # Additional global or module styles
-│   │   └── theme.css
-│   │
-│   ├── context/                    # React Context API setup
+│   ├── context/                     # Global React Contexts
 │   │   ├── ThemeContext.tsx
 │   │   └── BlogContext.tsx
 │   │
-│   └── constants/                  # App constants
-│       └── siteConfig.ts           # Site title, description, URLs, etc.
+│   ├── constants/                   # Static config/constants
+│   │   └── siteConfig.ts
+│   │
+│   └── styles/                      # Extra global or module styles
+│       └── theme.css
 │
-├── .env.local                      # Environment variables
+├── .env.local                       # Environment variables
 ├── .gitignore
+├── next.config.mjs
 ├── package.json
 ├── tailwind.config.ts
 ├── tsconfig.json
 └── README.md
-
 
 
 ---
