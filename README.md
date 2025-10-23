@@ -34,3 +34,43 @@ Perfect for showcasing your projects, writing technical blogs, and building your
 
 ## 🧱 Folder Structure
 
+devfolio/
+├── src/
+│ ├── components/ # Reusable UI components
+│ ├── app/ # Next.js app router pages
+│ ├── lib/ # Utility functions & configs
+│ ├── types/ # TypeScript interfaces
+│ ├── data/ # Blog or project data
+│ └── styles/ # Global styles
+├── public/ # Static assets (images, icons)
+└── README.md
+
+
+---
+
+## 📝 Blog Data Example
+
+```ts
+{
+  title: "Mastering Next.js 14 App Router",
+  slug: "mastering-nextjs-14",
+  excerpt: "Learn how to use the new App Router in Next.js 14 for modern web apps.",
+  content: "Full markdown or rich text content goes here...",
+  featured: true,
+  tags: ["Next.js", "React", "TypeScript", "Tailwind CSS"],
+  createdAt: "2025-10-20"
+}
+
+⚙️ Installation & Setup
+
+# 1️⃣ Clone the repository
+git clone https://github.com/yourusername/devfolio.git
+
+# 2️⃣ Navigate to project directory
+cd devfolio
+
+# 3️⃣ Install dependencies
+npm install  # or yarn install
+
+# 4️⃣ Run development server
+npm run dev  # http://localhost:3000
