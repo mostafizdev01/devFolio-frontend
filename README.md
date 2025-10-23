@@ -35,15 +35,84 @@ Perfect for showcasing your projects, writing technical blogs, and building your
 ## 🧱 Folder Structure
 
 devfolio/
+├── public/                         # Static files (images, icons, etc.)
+│   ├── favicon.ico
+│   ├── logo.png
+│   └── blog/
+│       └── images/
+│
 ├── src/
-│ ├── components/ # Reusable UI components
-│ ├── app/ # Next.js app router pages
-│ ├── lib/ # Utility functions & configs
-│ ├── types/ # TypeScript interfaces
-│ ├── data/ # Blog or project data
-│ └── styles/ # Global styles
-├── public/ # Static assets (images, icons)
+│   ├── app/                        # Next.js App Router pages
+│   │   ├── (site)/                 # Public-facing routes
+│   │   │   ├── page.tsx            # Home page
+│   │   │   ├── blog/
+│   │   │   │   ├── page.tsx        # Blog list page
+│   │   │   │   └── [slug]/page.tsx # Single blog details
+│   │   │   └── projects/
+│   │   │       ├── page.tsx        # Projects showcase
+│   │   │       └── [id]/page.tsx   # Single project details
+│   │   │
+│   │   ├── (dashboard)/            # Optional admin/dashboard section
+│   │   │   ├── layout.tsx
+│   │   │   ├── page.tsx
+│   │   │   └── posts/
+│   │   │       ├── create/page.tsx
+│   │   │       └── edit/[id]/page.tsx
+│   │   │
+│   │   ├── api/                    # API routes (server actions)
+│   │   │   ├── posts/
+│   │   │   │   ├── route.ts        # CRUD routes for posts
+│   │   │   └── contact/
+│   │   │       └── route.ts        # Contact form submit
+│   │   │
+│   │   ├── layout.tsx              # Root layout
+│   │   └── globals.css             # Global styles
+│   │
+│   ├── components/                 # Reusable UI Components
+│   │   ├── ui/                     # ShadCN-based UI (Button, Card, etc.)
+│   │   ├── layout/                 # Navbar, Footer, ThemeToggle, etc.
+│   │   ├── blog/                   # BlogCard, BlogList, BlogHeader, etc.
+│   │   ├── projects/               # ProjectCard, ProjectList, etc.
+│   │   └── shared/                 # Reusable small components (Badge, Tag)
+│   │
+│   ├── data/                       # Static/local data
+│   │   ├── blogs.ts                # Blog content (if file-based)
+│   │   ├── projects.ts             # Project data
+│   │   └── socialLinks.ts          # Social links, contact info
+│   │
+│   ├── lib/                        # Utility and helper functions
+│   │   ├── utils.ts                # Common helpers
+│   │   ├── seo.ts                  # SEO config
+│   │   ├── prisma.ts               # Prisma client instance
+│   │   ├── db.ts                   # DB connection (MongoDB/Mongoose)
+│   │   └── markdown.ts             # Markdown parser setup
+│   │
+│   ├── types/                      # TypeScript interfaces & types
+│   │   ├── blog.d.ts
+│   │   ├── project.d.ts
+│   │   └── index.d.ts
+│   │
+│   ├── hooks/                      # Custom React hooks
+│   │   ├── useTheme.ts
+│   │   └── useScrollPosition.ts
+│   │
+│   ├── styles/                     # Additional global or module styles
+│   │   └── theme.css
+│   │
+│   ├── context/                    # React Context API setup
+│   │   ├── ThemeContext.tsx
+│   │   └── BlogContext.tsx
+│   │
+│   └── constants/                  # App constants
+│       └── siteConfig.ts           # Site title, description, URLs, etc.
+│
+├── .env.local                      # Environment variables
+├── .gitignore
+├── package.json
+├── tailwind.config.ts
+├── tsconfig.json
 └── README.md
+
 
 
 ---
