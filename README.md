@@ -33,84 +33,90 @@ Perfect for showcasing your projects, writing technical blogs, and building your
 ---
 
 ## 🧱 Folder Structure
-📦 devfolio
-┣ 📁 public
-┃ ┣ 📄 favicon.ico
-┃ ┣ 📄 logo.png
-┃ ┗ 📁 blog
-┃ ┗ 📁 images
-┃
-┣ 📁 src
-┃ ┣ 📁 app
-┃ ┃ ┣ 📁 (site)
-┃ ┃ ┃ ┣ 📄 page.tsx # Home page
-┃ ┃ ┃ ┣ 📁 blog
-┃ ┃ ┃ ┃ ┣ 📄 page.tsx # Blog list page
-┃ ┃ ┃ ┃ ┗ 📄 [slug]/page.tsx # Blog details
-┃ ┃ ┃ ┣ 📁 projects
-┃ ┃ ┃ ┃ ┣ 📄 page.tsx # Projects
-┃ ┃ ┃ ┃ ┗ 📄 [id]/page.tsx # Project details
-┃ ┃ ┃ ┗ 📄 about/page.tsx # About page
-┃ ┃ ┣ 📁 (dashboard)
-┃ ┃ ┃ ┣ 📄 layout.tsx
-┃ ┃ ┃ ┣ 📄 page.tsx
-┃ ┃ ┃ ┗ 📁 posts
-┃ ┃ ┃ ┣ 📄 create/page.tsx
-┃ ┃ ┃ ┗ 📄 edit/[id]/page.tsx
-┃ ┃ ┣ 📁 api
-┃ ┃ ┃ ┣ 📁 posts
-┃ ┃ ┃ ┃ ┗ 📄 route.ts # CRUD routes
-┃ ┃ ┃ ┗ 📁 contact
-┃ ┃ ┃ ┗ 📄 route.ts # Contact form
-┃ ┃ ┣ 📄 layout.tsx # Root layout
-┃ ┃ ┗ 📄 globals.css # Global styles
-┃ ┃
-┃ ┣ 📁 components
-┃ ┃ ┣ 📁 ui # ShadCN / Base UI components
-┃ ┃ ┣ 📁 layout # Navbar, Footer, ThemeSwitcher
-┃ ┃ ┣ 📁 blog # BlogCard, BlogList, etc.
-┃ ┃ ┣ 📁 projects # ProjectCard, ProjectList
-┃ ┃ ┗ 📁 shared # Badge, Tag, etc.
-┃ ┃
-┃ ┣ 📁 data
-┃ ┃ ┣ 📄 blogs.ts
-┃ ┃ ┣ 📄 projects.ts
-┃ ┃ ┗ 📄 socialLinks.ts
-┃ ┃
-┃ ┣ 📁 lib
-┃ ┃ ┣ 📄 utils.ts
-┃ ┃ ┣ 📄 seo.ts
-┃ ┃ ┣ 📄 prisma.ts
-┃ ┃ ┣ 📄 db.ts
-┃ ┃ ┗ 📄 markdown.ts
-┃ ┃
-┃ ┣ 📁 types
-┃ ┃ ┣ 📄 blog.d.ts
-┃ ┃ ┣ 📄 project.d.ts
-┃ ┃ ┗ 📄 index.d.ts
-┃ ┃
-┃ ┣ 📁 hooks
-┃ ┃ ┣ 📄 useTheme.ts
-┃ ┃ ┗ 📄 useScrollPosition.ts
-┃ ┃
-┃ ┣ 📁 context
-┃ ┃ ┣ 📄 ThemeContext.tsx
-┃ ┃ ┗ 📄 BlogContext.tsx
-┃ ┃
-┃ ┣ 📁 constants
-┃ ┃ ┗ 📄 siteConfig.ts
-┃ ┃
-┃ ┗ 📁 styles
-┃ ┗ 📄 theme.css
-┃
-┣ 📄 .env.local
-┣ 📄 .gitignore
-┣ 📄 next.config.mjs
-┣ 📄 package.json
-┣ 📄 tailwind.config.ts
-┣ 📄 tsconfig.json
-┗ 📄 README.md
 
+<details>
+  <summary>
+    devfolio/
+├── public/
+│   ├── favicon.ico
+│   ├── logo.png
+│   └── blog/
+│       └── images/
+│
+├── src/
+│   ├── app/
+│   │   ├── (site)/
+│   │   │   ├── page.tsx
+│   │   │   ├── blog/
+│   │   │   │   ├── page.tsx
+│   │   │   │   └── [slug]/page.tsx
+│   │   │   ├── projects/
+│   │   │   │   ├── page.tsx
+│   │   │   │   └── [id]/page.tsx
+│   │   │   └── about/page.tsx
+│   │   │
+│   │   ├── (dashboard)/
+│   │   │   ├── layout.tsx
+│   │   │   ├── page.tsx
+│   │   │   └── posts/
+│   │   │       ├── create/page.tsx
+│   │   │       └── edit/[id]/page.tsx
+│   │   │
+│   │   ├── api/
+│   │   │   ├── posts/route.ts
+│   │   │   └── contact/route.ts
+│   │   │
+│   │   ├── layout.tsx
+│   │   └── globals.css
+│   │
+│   ├── components/
+│   │   ├── ui/
+│   │   ├── layout/
+│   │   ├── blog/
+│   │   ├── projects/
+│   │   └── shared/
+│   │
+│   ├── data/
+│   │   ├── blogs.ts
+│   │   ├── projects.ts
+│   │   └── socialLinks.ts
+│   │
+│   ├── lib/
+│   │   ├── utils.ts
+│   │   ├── seo.ts
+│   │   ├── prisma.ts
+│   │   ├── db.ts
+│   │   └── markdown.ts
+│   │
+│   ├── types/
+│   │   ├── blog.d.ts
+│   │   ├── project.d.ts
+│   │   └── index.d.ts
+│   │
+│   ├── hooks/
+│   │   ├── useTheme.ts
+│   │   └── useScrollPosition.ts
+│   │
+│   ├── context/
+│   │   ├── ThemeContext.tsx
+│   │   └── BlogContext.tsx
+│   │
+│   ├── constants/
+│   │   └── siteConfig.ts
+│   │
+│   └── styles/
+│       └── theme.css
+│
+├── .env.local
+├── .gitignore
+├── next.config.mjs
+├── package.json
+├── tailwind.config.ts
+├── tsconfig.json
+└── README.md
+
+  </summary>
+</details>
 ---
 
 ## 📝 Blog Data Example
